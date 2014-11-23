@@ -5,26 +5,25 @@ api_version: 1
 threadsafe: true
 
 handlers:
-
 - url: /static/(.*\.css)$
   static_files: static/\1
   upload: static/.*\.css$
   mime_type: "text/css"
 - url: /static/(.*\.js)$
-  static_files: static/js/\1
-  upload: static/js/.*\.js$
+  static_files: static/\1
+  upload: static/.*\.js$
   mime_type: "application/javascript"
-- url: /img/(.*\.gif)$
-  static_files: img/\1
-  upload: img/.*\.gif$
+- url: /static/(.*\.gif)$
+  static_files: static/\1
+  upload: static/.*\.gif$
   mime_type: "image/gif"
-- url: /img/(.*\.png)$
-  static_files: img/\1
-  upload: img/.*\.png$
+- url: /static/(.*\.png)$
+  static_files: static/\1
+  upload: static/.*\.png$
   mime_type: "image/x-png"
-- url: /img/(.*\.jpg)$
-  static_files: img/\1
-  upload: img/.*\.jpg$
+- url: /static/(.*\.jpg)$
+  static_files: static/\1
+  upload: static/.*\.jpg$
   mime_type: "image/jpeg"
 
 - url: /.*
