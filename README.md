@@ -31,4 +31,5 @@ We'll review as soon as possible.
 
 ## Reference
 - http://www.tornadoweb.org/en/stable/
-- https://mongolab.com/
+- https://developers.facebook.com/docs/other-sdks?locale=zh_TW
+- https://cloud.google.com/appengine/docs/python/ndb/
