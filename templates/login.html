@@ -1,0 +1,20 @@
+<div id="fb-root"></div>
+<script>
+      window.fbAsyncInit = function() {
+        FB.init({appId: '415752781909312', status: true,
+                 cookie: true, xfbml: true,oauth: true});
+      };
+      (function() {
+        var e = document.createElement('script');
+        e.type = 'text/javascript';
+        e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+        e.async = true;
+        document.getElementById('fb-root').appendChild(e);
+      }());
+</script>
+<form action="/login" method="POST">
+	<input type="text" name="facebook" value='1'>
+	<input type="submit">
+</form>
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
