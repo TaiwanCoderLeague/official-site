@@ -2,12 +2,14 @@ import logging
 
 from basehandler import BaseHandler
 from tool import users
+from tool.config import APP_Key
 
 class LoginPage(BaseHandler):
 	def get(self):
 		# if self.current_user:
 		# 	self.redirect('/')
-		self.render('login.html',FACEBOOK_APP_ID=users.FACEBOOK_APP_ID)
+		logging.error(APP_Key.get('FACEBOOK_APP_ID'))
+		self.render('login.html',FACEBOOK_APP_ID=APP_Key.get('FACEBOOK_APP_ID'))
 	def post(self):
 		if self.get_argument(name='facebook',default=''):
 			cookies = dict((n, self.cookies[n].value) for n in self.cookies.keys())
