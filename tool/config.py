@@ -5,7 +5,7 @@ import logging
 
 debug = {
     'cookie_secret'      :'ejmo;powfoi4388hfgy2rh3bhfweo0-=',
-    'FACEBOOK_APP_ID'    :'5',
+    'FACEBOOK_APP_ID'    :'415752781909312',
     'FACEBOOK_APP_SECRET':'',
 }
 

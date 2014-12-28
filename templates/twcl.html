@@ -211,7 +211,7 @@
                         <h4>Round Icons</h4>
                     </div>
 <!-- this is a modal -->
-                    <div class="modal fade login" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true"
+                    <!--<div class="modal fade login" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true"
                     >
                         <div class="modal-dialog modal-sm">
                             <div class="modal-content" id="login_modal">
@@ -220,7 +220,7 @@
                                 
                 
                                 
-                                <div id="login_div">
+                                <form id="login_form" action="/login" method="post">
                                 <br>
                                 <h4 id="login_signin">Sign in:</h4>
                                 <input type="text" class="form-control" placeholder="Your Name" required data-validation-required-message="Please enter your name."id="login_imput" required>
@@ -228,27 +228,25 @@
                                 <!-- <h4 align="center">Password</h4> -->
                                 <input type="password" class="form-control" placeholder="Password" required data-validation-required-message="Please enter your password."
                                  id="login_imput" required>
-
-<br>
+                                <br>
                                 <button type="submit" class="btn btn-primary"
                                 id="login_submit">
                                 Submit</button>
-<br>
-<br>
+                                <br>
+                                <br>
                                 <button type="button" class="btn btn-primary" id="fb_login_btn"
                                 >
-
                                     <i class="fa fa-facebook-square fa-2x" 
                                     style:color="blue"></i>
                                       Log in with facebook
                                 </button>
                                 <br>
                                 <br>
-                                </div>
+                                </form>
                             </p>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
 
                 
@@ -374,6 +372,9 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="/static/twcl_page/js/agency.js"></script>
+
+    <!-- FaceBookLogin JavaScript -->
+    <script src="/static/twcl_page/js/facebookLogin.js"></script>
 
 </body>
 
