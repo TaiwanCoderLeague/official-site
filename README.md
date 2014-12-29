@@ -8,7 +8,7 @@ community中有三塊
 第一個是一個聊天室  
 第二個是討論串  
 第三個是一個TWCL的wiki  
-另外每個使用者會有一個簡單的個人頁面 
+另外每個使用者會有一個個人的blog頁面 
 
 ## How to Collaborate
 
