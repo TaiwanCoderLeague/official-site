@@ -211,30 +211,28 @@
                         <h4>Round Icons</h4>
                     </div>
 <!-- this is a modal -->
-                    <!--<div class="modal fade login" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true"
+                    <div class="modal fade login" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true"
                     >
                         <div class="modal-dialog modal-sm">
-                            <div class="modal-content" id="login_modal">
+                            <div class="modal-content" id="login-modal">
                             <p>
                                 <h2 align="center">Log in</h2>
                                 
                 
                                 
-                                <form id="login_form" action="/login" method="post">
+                                <form id="login-form" action="/login" method="post">
                                 <br>
-                                <h4 id="login_signin">Sign in:</h4>
-                                <input type="text" class="form-control" placeholder="Your Name" required data-validation-required-message="Please enter your name."id="login_imput" required>
+                                <h4 id="login-signin">Sign in:</h4>
+                                <input type="text" class="form-control login-input" placeholder="Your Name" required data-validation-required-message="Please enter your name." name="username" required>
                                 <br>
                                 <!-- <h4 align="center">Password</h4> -->
-                                <input type="password" class="form-control" placeholder="Password" required data-validation-required-message="Please enter your password."
-                                 id="login_imput" required>
+                                <input type="password" class="form-control login-input" placeholder="Password" required data-validation-required-message="Please enter your password." name="passward" required>
                                 <br>
-                                <button type="submit" class="btn btn-primary"
-                                id="login_submit">
+                                <button type="submit" class="btn btn-primary login-submit">
                                 Submit</button>
                                 <br>
                                 <br>
-                                <button type="button" class="btn btn-primary" id="fb_login_btn"
+                                <button type="button" class="btn btn-primary" id="fb-login-btn"
                                 >
                                     <i class="fa fa-facebook-square fa-2x" 
                                     style:color="blue"></i>

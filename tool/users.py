@@ -10,6 +10,7 @@ def get_fb_cookie(cookies):
     return facebook.get_user_from_cookie(cookies,
                                     APP_Key.get('FACEBOOK_APP_ID'),
                                     APP_Key.get('FACEBOOK_APP_SECRET'))
+
 def check_facebook_user(fb_cookie):
     user = User.by_fid(str(fb_cookie['uid']))
     if not user:
@@ -18,6 +19,7 @@ def check_facebook_user(fb_cookie):
         user.access_token = fb_cookie["access_token"]
         user.put()
     return user
+
 def new_facebook_user(fb_cookie):
     graph = facebook.GraphAPI(fb_cookie["access_token"])
     profile = graph.get_object("me")
@@ -32,3 +34,9 @@ def new_facebook_user(fb_cookie):
     )
     user.put()
     return user
+
+def check_user(name,passward):
+    pass
+
+def new_user(**kw):
+    pass
