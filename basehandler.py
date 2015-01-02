@@ -10,7 +10,7 @@ class BaseHandler(tornado.web.RequestHandler):
     def get_current_user(self):
         uid = self.get_secure_cookie("uid")
         if not uid:
-        	return None
+            return None
         user = memcache.get('USER_'+uid)
         if not user:
         	user = User.by_id(int(uid))
