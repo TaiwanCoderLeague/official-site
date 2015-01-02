@@ -1,3 +1,4 @@
+#coding=utf-8
 import logging
 
 from basehandler import BaseHandler
@@ -6,16 +7,17 @@ from tool.config import APP_Key
 
 class LoginPage(BaseHandler):
     def post(self):
-        fb_login = self.get_argument(name='facebook',default='')
-        if fb_login == 1:
+        fb_login = self.get_argument(name='fblogin',default='')
+        if fb_login == '1':
             #Login with FB,
-            #if user doesn't exist, sign up with FB,
-            #if user doesn't sign in with FB,return 403.
             cookies = dict((n, self.cookies[n].value) for n in self.cookies.keys())
             fb_cookie = users.get_fb_cookie(cookies)
+            logging.error(cookies)
+            #if user doesn't sign in with FB,return 403.
             if not fb_cookie:
-                return self.HTTPError(403)
+                return self.error(403)
             user = users.check_facebook_user(fb_cookie)
+            #if user doesn't exist, sign up with FB,
             if not user:
                 user = users.new_facebook_user(fb_cookie)
             self.set_secure_cookie('uid',str(user.key.id()))
@@ -30,3 +32,7 @@ class LoginPage(BaseHandler):
             self.error(404)
             # --------end---Needs to be done.-------
 
+class LogoutPage(BaseHandler):
+    def get(self):
+        self.set_secure_cookie('uid','')
+        return self.redirect('/')

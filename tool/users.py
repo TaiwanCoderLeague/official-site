@@ -1,3 +1,4 @@
+#coding=utf-8
 import facebook
 import memcache
 import logging
@@ -5,7 +6,7 @@ import logging
 from datastore import User
 from config import APP_Key
 
-
+# FB user function
 def get_fb_cookie(cookies):
     return facebook.get_user_from_cookie(cookies,
                                     APP_Key.get('FACEBOOK_APP_ID'),
@@ -35,6 +36,7 @@ def new_facebook_user(fb_cookie):
     user.put()
     return user
 
+# normal user function
 def check_user(name,passward):
     pass
 
