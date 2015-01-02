@@ -4,10 +4,9 @@
 
 簡單來說我們要寫一個入口主頁，這個主頁是公開的然後提供TWCL的基本資訊等等  
 接著透過登錄(FB,Google,或創建新的...)可以進入TWCL的community  
-community中有三塊  
-第一個是一個聊天室  
-第二個是討論串  
-第三個是一個TWCL的wiki  
+community中有三塊 
+有一個聊天室  
+主要頁面是一個討論區 有問題、討論、分享等分類文章
 另外每個使用者會有一個個人的blog頁面 
 
 ## How to Collaborate
