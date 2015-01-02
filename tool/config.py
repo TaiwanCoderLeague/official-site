@@ -6,7 +6,7 @@ import logging
 debug = {
     'cookie_secret'      :'ejmo;powfoi4388hfgy2rh3bhfweo0-=',
     'FACEBOOK_APP_ID'    :'415752781909312',
-    'FACEBOOK_APP_SECRET':'',
+    'FACEBOOK_APP_SECRET':'e8596b67422e2c1c0f3eb4ebb7a45add',
 }
 
 class APP_Key(ndb.Model):

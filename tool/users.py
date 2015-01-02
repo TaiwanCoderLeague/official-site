@@ -7,9 +7,12 @@ from config import APP_Key
 
 
 def get_fb_cookie(cookies):
-    return facebook.get_user_from_cookie(cookies,
+    tmp = facebook.get_user_from_cookie(cookies,
                                     APP_Key.get('FACEBOOK_APP_ID'),
                                     APP_Key.get('FACEBOOK_APP_SECRET'))
+    logging.error("GG\n")
+    logging.error(tmp)
+    return tmp
 
 def check_facebook_user(fb_cookie):
     user = User.by_fid(str(fb_cookie['uid']))

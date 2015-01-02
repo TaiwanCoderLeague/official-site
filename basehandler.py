@@ -15,7 +15,8 @@ class BaseHandler(tornado.web.RequestHandler):
         	user = User.by_id(int(uid))
         return user
     def render(self,*a,**kw):
-        kw['FACEBOOK_APP_ID']=APP_Key.get('FACEBOOK_APP_ID')
+        kw['FACEBOOK_APP_ID'] = APP_Key.get('FACEBOOK_APP_ID')
+        kw['current_user'] = self.current_user
         super(BaseHandler, self).render(*a,**kw)
     def error(self,error):
         raise tornado.web.HTTPError(error)
