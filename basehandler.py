@@ -20,4 +20,4 @@ class BaseHandler(tornado.web.RequestHandler):
         kw['current_user'] = self.current_user
         super(BaseHandler, self).render(*a,**kw)
     def error(self,error):
-        raise tornado.web.HTTPError(error)
+        raise tornado.web.HTTPError(error)tt
