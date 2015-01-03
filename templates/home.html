@@ -38,26 +38,45 @@
 {% block Content %}
 <div class="container-fluid">
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#post-help" data-toggle="tab">Help</a></li>
+    <li class="active"><a href="#post-question" data-toggle="tab">Question</a></li>
     <li><a href="#post-discus" data-toggle="tab">Discus</a></li>
     <li><a href="#post-technology" data-toggle="tab">Technology</a></li>
     <li><a href="#post-amazing" data-toggle="tab">Amazing</a></li>
   </ul>
-  <form class="tab-content">
-    <input type="text">
-    <div class="tab-pane fade active in" id="post-help">
-      
+  <div class="tab-content">
+    <div class="tab-pane fade active in" id="post-question">
+      <form action="/post" method="post">
+        <input type="text" name="type" value="question" hidden>
+        <input type="text" class="form-control" name="title" placeholder="Need help?" required data-validation-required-message="Please enter the title.">
+        <textarea class="form-control" name="content" placeholder="Optional - Your question detail." rows="8"></textarea>
+        <button type="submit" class="btn">submit</button>
+      </form>
     </div>
     <div class="tab-pane fade" id="post-discus">
-      
+      <form action="/post" method="post">
+        <input type="text" name="type" value="discus" hidden>
+        <input type="text" class="form-control" name="title" placeholder="Let's talk about..." required data-validation-required-message="Please enter the title.">
+        <textarea class="form-control" name="content" placeholder="Optional - Your discusion detail." rows="8"></textarea>
+        <button type="submit" class="btn">submit</button>
+      </form>
     </div>
     <div class="tab-pane fade" id="post-technology">
-
+      <form action="/post" method="post">
+        <input type="text" name="type" value="technology" hidden>
+        <input type="text" class="form-control" name="title" placeholder="Do you know..." required data-validation-required-message="Please enter the title.">
+        <textarea class="form-control" name="content" placeholder="What do you want to share?" required data-validation-required-message="Please enter something." rows="8"></textarea>
+        <button type="submit" class="btn">submit</button>
+      </form>
     </div>
     <div class="tab-pane fade" id="post-amazing">
-
+      <form action="/post" method="post">
+        <input type="text" name="type" value="amazing" hidden>
+        <input type="text" class="form-control" name="title" placeholder="Jack, this is amazing!" required data-validation-required-message="Please enter the title.">
+        <textarea class="form-control" name="content" placeholder="Something interesting!" required data-validation-required-message="Please enter something." rows="8"></textarea>
+        <button type="submit" class="btn">submit</button>
+      </form>
     </div>
-  </form>
+  </div>
 </div>
 
 <!-- <form action="">
