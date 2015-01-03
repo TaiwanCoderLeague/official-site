@@ -55,7 +55,7 @@ import sys
 import types
 
 from tornado.concurrent import Future, TracebackFuture, is_future, chain_future
-from tornado.ioloop import IOLoop
+# from tornado.ioloop import IOLoop
 from tornado import stack_context
 
 
