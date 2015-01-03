@@ -78,7 +78,7 @@ from tornado.concurrent import Future, is_future
 from tornado import escape
 from tornado import gen
 from tornado import httputil
-from tornado import iostream
+# from tornado import iostream
 from tornado import locale
 from tornado.log import access_log, app_log, gen_log
 from tornado import stack_context
