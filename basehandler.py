@@ -2,9 +2,9 @@
 import tornado.web
 import logging
 
+from tool import memcache
 from tool.datastore import User
 from tool.config import APP_Key
-from tool import memcache
 
 class BaseHandler(tornado.web.RequestHandler):
     def get_current_user(self):
