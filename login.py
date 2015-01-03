@@ -6,6 +6,8 @@ from tool import users
 from tool.config import APP_Key
 
 class LoginPage(BaseHandler):
+    def get(self):
+        return self.error(404)
     def post(self):
         fb_login = self.get_argument(name='fblogin',default='')
         if fb_login == '1':

@@ -257,8 +257,12 @@
 {% end %}
 
 {% block Javascript %}
-<!-- Navbar JavaScript -->
-<script src="/static/twcl_page/js/cbpAnimatedHeader.js"></script>
-<!-- FaceBook Login JavaScript -->
-<script src="/static/twcl_page/js/facebookLogin.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script src="/static/twcl_page/js/agency.js"></script>
+  <!-- Navbar JavaScript -->
+  <script src="/static/twcl_page/js/cbpAnimatedHeader.js"></script>
+  {% if not current_user %}
+    <!-- FaceBook Login JavaScript -->
+    <script src="/static/twcl_page/js/facebookLogin.js"></script>
+  {% end %}
 {% end %}
