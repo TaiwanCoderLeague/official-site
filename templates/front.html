@@ -7,13 +7,51 @@
     <div class="intro-text">
       <div class="intro-lead-in">Welcome To TWCL!</div>
       <div class="intro-heading">還沒想到要寫啥</div>
-      <a href="#about" class="page-scroll btn btn-xl">Tell Me More</a>
+      <a href="/home" class="page-scroll btn btn-xl">Join Discussion</a>
     </div>
   </div>
 </header>
 {% end %}
 
-{% block Section %}
+{% block NavLink %}    
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  <ul class="nav navbar-nav navbar-right">
+    <li class="hidden">
+      <a href="#page-top"></a>
+    </li>
+    <li>
+      <a class="page-scroll" href="#about">About</a>
+    </li>
+    <li>
+      <a class="page-scroll" href="#portfolio">Members</a>
+    </li>
+    <li>
+      <a class="page-scroll" href="#contact">Contact</a>
+    </li>
+    {% if current_user %}
+    <li>
+      <div class="btn btn-group">
+        <a class="btn btn-link dropdown-toggle" data-toggle="dropdown" href="#">
+          {{current_user.name}}
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    {% else %}
+    <li>
+      <a class="btn" data-toggle="modal" data-target=".login">Login</a>
+    </li>
+    {% end %}
+  </ul>
+</div>
+{% end %}
+
+{% block Content %}
 <section id="about">
   <div class="container-fluid">
     <div class="row text-center">
@@ -219,6 +257,8 @@
 {% end %}
 
 {% block Javascript %}
+<!-- Navbar JavaScript -->
+<script src="/static/twcl_page/js/cbpAnimatedHeader.js"></script>
 <!-- FaceBook Login JavaScript -->
 <script src="/static/twcl_page/js/facebookLogin.js"></script>
 {% end %}

@@ -16,6 +16,7 @@ var cbpAnimatedHeader = (function() {
 		changeHeaderOn = 300;
 
 	function init() {
+		classie.remove( header, 'navbar-shrink' );
 		window.addEventListener( 'scroll', function( event ) {
 			if( !didScroll ) {
 				didScroll = true;
