@@ -5,16 +5,17 @@ from basehandler import BaseHandler
 from tool import users
 from tool.config import APP_Key
 
+
 class LoginPage(BaseHandler):
     def get(self):
         return self.error(404)
+
     def post(self):
         fb_login = self.get_argument(name='fblogin',default='')
         if fb_login == '1':
             #Login with FB,
             cookies = dict((n, self.cookies[n].value) for n in self.cookies.keys())
             fb_cookie = users.get_fb_cookie(cookies)
-            logging.error(cookies)
             #if user doesn't sign in with FB,return 403.
             if not fb_cookie:
                 return self.error(403)
@@ -33,6 +34,7 @@ class LoginPage(BaseHandler):
             #users.check_user(**kw)
             self.error(404)
             # --------end---Needs to be done.-------
+
 
 class LogoutPage(BaseHandler):
     def get(self):
