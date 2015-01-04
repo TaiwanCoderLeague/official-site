@@ -4,18 +4,19 @@
 
 import logging
 
+from tornado.web import authenticated
 from tool.datastore import Post
-from basehandler import Basehandler
+from basehandler import BaseHandler
 
 
 def add_new_post(**kw):
     pass
 
 
-class PostPage(Basehandler):
+class PostPage(BaseHandler):
     def get(self):
         return self.error(404)
 
-    @tornado.web.authenticated
+    @authenticated
     def post(self):
         pass
