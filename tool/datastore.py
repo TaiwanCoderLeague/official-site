@@ -35,3 +35,16 @@ class User(ndb.Model):
 class Image(ndb.Model):
     img = ndb.BlobProperty(indexed=False)
     created = ndb.DateTimeProperty(auto_now_add=True)
+
+# The post of Question, Discus, technology, Amazing.
+class Post(ndb.Model):
+    title = ndb.StringProperty(required=True)
+    content = ndb.TextProperty()
+    post_tpye = ndb.StringProperty(required=True)
+    # time
+    created = ndb.DateTimeProperty(auto_now_add=True)
+    updated = ndb.DateTimeProperty(auto_now=True)
+    # evaluation, type is a list of Datastore Key to users
+    good = ndb.KeyProperty(repeated=True)
+    bad = ndb.KeyProperty(repeated=True)
+
