@@ -47,9 +47,15 @@ class Post(ndb.Model):
     title = ndb.StringProperty(required=True)
     content = ndb.TextProperty()
     post_tpye = ndb.StringProperty(required=True)
+    # author
+    author = ndb.KeyProperty(required=True)
     # time
     created = ndb.DateTimeProperty(auto_now_add=True)
     updated = ndb.DateTimeProperty(auto_now=True)
     # evaluation, type is a list of Datastore Key to users
     good = ndb.KeyProperty(repeated=True)
     bad = ndb.KeyProperty(repeated=True)
+
+    @staticmethod
+    def parent_key(path='/'):
+        return ndb.Key(path,'post')
