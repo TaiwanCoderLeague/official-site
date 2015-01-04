@@ -1,4 +1,7 @@
 #coding=utf-8
+"""
+User can login with account and passward,or with FB.
+"""
 import logging
 
 from basehandler import BaseHandler
@@ -26,9 +29,9 @@ class LoginPage(BaseHandler):
             self.set_secure_cookie('uid',str(user.key.id()))
             return self.redirect('/')
         else:
-            # Sign with username and passward.
+            # Sign with account and passward.
             kw = dict()
-            kw['username'] = self.get_argument(name='username',default='')
+            kw['account'] = self.get_argument(name='account',default='')
             kw['passward'] = self.get_argument(name='passward',default='')
             # --------begin-Needs to be done.-------.
             #users.check_user(**kw)
