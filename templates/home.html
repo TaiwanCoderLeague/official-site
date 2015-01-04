@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 
+
 {% block Header %}
 <header>
   <nav class="navbar navbar-default"></nav>
 </header>
 {% end %}
+
 
 {% block NavLink %}    
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -36,68 +38,52 @@
 {% end %}
 
 {% block Content %}
-<div class="container-fluid">
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#post-question" data-toggle="tab">Question</a></li>
-    <li><a href="#post-discus" data-toggle="tab">Discus</a></li>
-    <li><a href="#post-technology" data-toggle="tab">Technology</a></li>
-    <li><a href="#post-amazing" data-toggle="tab">Amazing</a></li>
-  </ul>
-  <div class="tab-content">
-    <div class="tab-pane fade active in" id="post-question">
-      <form action="/post" method="post">
-        <input type="text" name="type" value="question" hidden>
-        <input type="text" class="form-control" name="title" placeholder="Need help?" required data-validation-required-message="Please enter the title.">
-        <textarea class="form-control" name="content" placeholder="Optional - Your question detail." rows="8"></textarea>
-        <button type="submit" class="btn">submit</button>
-      </form>
-    </div>
-    <div class="tab-pane fade" id="post-discus">
-      <form action="/post" method="post">
-        <input type="text" name="type" value="discus" hidden>
-        <input type="text" class="form-control" name="title" placeholder="Let's talk about..." required data-validation-required-message="Please enter the title.">
-        <textarea class="form-control" name="content" placeholder="Optional - Your discusion detail." rows="8"></textarea>
-        <button type="submit" class="btn">submit</button>
-      </form>
-    </div>
-    <div class="tab-pane fade" id="post-technology">
-      <form action="/post" method="post">
-        <input type="text" name="type" value="technology" hidden>
-        <input type="text" class="form-control" name="title" placeholder="Do you know..." required data-validation-required-message="Please enter the title.">
-        <textarea class="form-control" name="content" placeholder="What do you want to share?" required data-validation-required-message="Please enter something." rows="8"></textarea>
-        <button type="submit" class="btn">submit</button>
-      </form>
-    </div>
-    <div class="tab-pane fade" id="post-amazing">
-      <form action="/post" method="post">
-        <input type="text" name="type" value="amazing" hidden>
-        <input type="text" class="form-control" name="title" placeholder="Jack, this is amazing!" required data-validation-required-message="Please enter the title.">
-        <textarea class="form-control" name="content" placeholder="Something interesting!" required data-validation-required-message="Please enter something." rows="8"></textarea>
-        <button type="submit" class="btn">submit</button>
-      </form>
+  {% if current_user %}
+  <div class="container-fluid">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#post-question" data-toggle="tab">Question</a></li>
+      <li><a href="#post-discus" data-toggle="tab">Discus</a></li>
+      <li><a href="#post-technology" data-toggle="tab">Technology</a></li>
+      <li><a href="#post-amazing" data-toggle="tab">Amazing</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane fade active in" id="post-question">
+        <form action="/post" method="post">
+          <input type="text" name="type" value="question" hidden>
+          <input type="text" class="form-control" name="title" placeholder="Need help?" required data-validation-required-message="Please enter the title.">
+          <textarea class="form-control" name="content" placeholder="Optional - Your question detail." rows="8"></textarea>
+          <button type="submit" class="btn">submit</button>
+        </form>
+      </div>
+      <div class="tab-pane fade" id="post-discus">
+        <form action="/post" method="post">
+          <input type="text" name="type" value="discus" hidden>
+          <input type="text" class="form-control" name="title" placeholder="Let's talk about..." required data-validation-required-message="Please enter the title.">
+          <textarea class="form-control" name="content" placeholder="Optional - Your discusion detail." rows="8"></textarea>
+          <button type="submit" class="btn">submit</button>
+        </form>
+      </div>
+      <div class="tab-pane fade" id="post-technology">
+        <form action="/post" method="post">
+          <input type="text" name="type" value="technology" hidden>
+          <input type="text" class="form-control" name="title" placeholder="Do you know..." required data-validation-required-message="Please enter the title.">
+          <textarea class="form-control" name="content" placeholder="What do you want to share?" required data-validation-required-message="Please enter something." rows="8"></textarea>
+          <button type="submit" class="btn">submit</button>
+        </form>
+      </div>
+      <div class="tab-pane fade" id="post-amazing">
+        <form action="/post" method="post">
+          <input type="text" name="type" value="amazing" hidden>
+          <input type="text" class="form-control" name="title" placeholder="Jack, this is amazing!" required data-validation-required-message="Please enter the title.">
+          <textarea class="form-control" name="content" placeholder="Something interesting!" required data-validation-required-message="Please enter something." rows="8"></textarea>
+          <button type="submit" class="btn">submit</button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
-
-<!-- <form action="">
-  <select>
-    <option>Help</option>
-    <option>Discus</option>
-    <option>Technology</option>
-    <option>Amazing</option>
-  </select>
-  <input type="text">
-  <textarea name="" cols="30" rows="10"></textarea>
-  <button type="submit">submit</button>
-</form>
-<div class="container-fluid">
-  <div>ff</div>
-  {% for i in range(60) %}
-    <div>tt</div>
   {% end %}
-  <div>ee</div>
-</div> -->
 {% end %}
+
 
 {% block Footer %}
 <footer>
@@ -111,6 +97,7 @@
 </footer>
 {% end %}
 
+
 {% block Modals %}
 <!-- Login Modal -->
 <div class="modal fade login" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -121,7 +108,7 @@
       <form id="login-form" action="/login" method="post">
         <br>
         <h4 id="login-signin">Sign in:</h4>
-        <input type="text" class="form-control login-input" placeholder="Your Name" required data-validation-required-message="Please enter your name." name="username" required>
+        <input type="text" class="form-control login-input" placeholder="Your Name" required data-validation-required-message="Please enter your name." name="account" required>
         <br>
         <!-- <h4 align="center">Password</h4> -->
         <input type="password" class="form-control login-input" placeholder="Password" required data-validation-required-message="Please enter your password." name="passward" required>
@@ -143,6 +130,7 @@
   </div>
 </div>
 {% end %}
+
 
 {% block Javascript %}
   {% if not current_user %}

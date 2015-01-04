@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+
 {% block Header %}
 <header>
   <!-- if you want to change background-image,go to agency.css line 264 -->
@@ -12,6 +13,7 @@
   </div>
 </header>
 {% end %}
+
 
 {% block NavLink %}
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -50,6 +52,7 @@
   </ul>
 </div>
 {% end %}
+
 
 {% block Content %}
 <section id="about">
@@ -189,6 +192,7 @@
 </section>
 {% end %}
 
+
 {% block Footer %}
 <footer>
   <div class="container">
@@ -200,6 +204,7 @@
   </div>
 </footer>
 {% end %}
+
 
 {% block Modals %}
 <!-- Portfolio Modal 1 -->
@@ -233,7 +238,7 @@
       <form id="login-form" action="/login" method="post">
         <br>
         <h4 id="login-signin">Sign in:</h4>
-        <input type="text" class="form-control login-input" placeholder="Your Name" required data-validation-required-message="Please enter your name." name="username" required>
+        <input type="text" class="form-control login-input" placeholder="Your Name" required data-validation-required-message="Please enter your name." name="account" required>
         <br>
         <!-- <h4 align="center">Password</h4> -->
         <input type="password" class="form-control login-input" placeholder="Password" required data-validation-required-message="Please enter your password." name="passward" required>
@@ -255,6 +260,7 @@
   </div>
 </div>
 {% end %}
+
 
 {% block Javascript %}
   <!-- Custom Theme JavaScript -->
