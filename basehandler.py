@@ -20,6 +20,7 @@ class BaseHandler(tornado.web.RequestHandler):
     def render(self,*a,**kw):
         kw['FACEBOOK_APP_ID'] = APP_Key.get('FACEBOOK_APP_ID')
         kw['current_user'] = self.current_user
+        kw['request_url'] = self.request.uri
         super(BaseHandler, self).render(*a,**kw)
 
     def error(self,error):

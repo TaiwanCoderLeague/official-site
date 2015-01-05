@@ -14,6 +14,8 @@ class LoginPage(BaseHandler):
         return self.error(404)
 
     def post(self):
+        # redirect to whitch url user login from.
+        referer = self.get_argument(name='referer',default='/')
         fb_login = self.get_argument(name='fblogin',default='')
         if fb_login == '1':
             #Login with FB,
@@ -27,7 +29,7 @@ class LoginPage(BaseHandler):
             if not user:
                 user = users.new_facebook_user(fb_cookie)
             self.set_secure_cookie('uid',str(user.key.id()))
-            return self.redirect('/')
+            return self.redirect(referer)
         else:
             # Sign with account and passward.
             kw = dict()
