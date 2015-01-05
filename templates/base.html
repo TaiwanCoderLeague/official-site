@@ -33,6 +33,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
 
+
   <!-- template Link -->
   {% block Link %}
   {% end %}
@@ -40,6 +41,7 @@
 </head>
 
 <body id="page-top" class="index">
+
 
   <!-- ___________________________FB_API____________________________ -->
   <div id="fb-root"></div>
@@ -81,24 +83,59 @@
     <!-- /.container-fluid -->
   </nav>
 
+
   <!-- Header -->
   {% block Header %}
   {% end %}
+
   
   <!-- About Section -->
   {% block Content %}
   {% end %}
 
+
   <!-- Footer -->
   {% block Footer %}
   {% end %}
 
+
   <!-- Portfolio Modals -->
   <!-- Use the modals below to showcase details about your portfolio projects! -->
-
+  <!-- Login Modal -->
+  <div class="modal fade login" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content" id="login-modal">
+      <p>
+        <h2 align="center">Log in</h2>
+        <form id="login-form" action="/login" method="post">
+          <input type="text" name="referer" value="{{request_url}}" hidden>
+          <br>
+          <h4 id="login-signin">Sign in:</h4>
+          <input type="text" class="form-control login-input" placeholder="Your Name" required data-validation-required-message="Please enter your name." name="account" required>
+          <br>
+          <!-- <h4 align="center">Password</h4> -->
+          <input type="password" class="form-control login-input" placeholder="Password" required data-validation-required-message="Please enter your password." name="passward" required>
+          <br>
+          <button type="submit" class="btn btn-primary login-submit">
+            Submit
+          </button>
+          <br>
+          <br>
+          <button type="button" class="btn btn-primary" id="fb-login-btn">
+            <i class="fa fa-facebook-square fa-2x" style:color="blue"></i>
+            Log in with facebook
+          </button>
+          <br>
+          <br>
+        </form>
+      </p>
+      </div>
+    </div>
+  </div>
   {% block Modals %}
   {% end %}
-  
+
+
   <!-- jQuery -->
   <script src="/static/twcl_page/js/jquery.js"></script>
 
