@@ -1,7 +1,7 @@
 //Login Fb
 var fb_login_btn_lock = false;
 
-$('#fb-login-btn').click(function(){
+$('.fb-login-btn').click(function(){
     if(fb_login_btn_lock)return;
     fb_login_btn_lock = true;
     console.log('fb login');

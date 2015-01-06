@@ -866,9 +866,6 @@ body {
     webkit-tap-highlight-color: #fed136;
 }
 /*portfolio*/
-.col-md-4{
-    width:24.33333333%;
-}
 .row{
     margin-left:0px;
 }
@@ -877,7 +874,7 @@ body {
     width:120%;
     margin-left:-10%;
 }
-#fb-login-btn{
+.fb-login-btn{
     width:70%;
     margin-left:15%;
 }
