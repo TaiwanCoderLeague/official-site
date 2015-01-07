@@ -14,7 +14,12 @@ class SignupPage(BaseHandler):
         if self.current_user:
             return self.redirect('/')
 
-        self.render('signup.html',referer_url='/',has_error=False)
+        referer = self.get_argument(name='referer',default='/')
+        self.render('signup.html',
+                        referer_url = referer,
+                        has_error = False,
+                        account = '',
+                    )
 
     def post(self):
         if self.current_user:
@@ -37,9 +42,36 @@ class SignupPage(BaseHandler):
             self.set_secure_cookie('uid',str(user.key.id()))
             return self.redirect(referer)
         else:
-            # --------begin-Needs to be done.-------.
-            self.error(404)
-            # --------end---Needs to be done.-------
+            # Sign up with account and passward.
+            kw = dict()
+            kw['account'] = self.get_argument(name='account',default='')
+            kw['passward'] = self.get_argument(name='passward',default='')
+            kw['verify'] = self.get_argument(name='verify',default='')
+            # Check string.
+            if not users.match_string(kw['account'],r'^[a-zA-Z0-9_-]{8,20}$'):
+                kw['has_error'] = True
+                kw['error_title'] = 'User Name Invalid!'
+                kw['error_message'] = '使用者名稱錯誤，使用者名稱必須介於8到20個字元，並且只包含大小寫英文字母、數字、底線或減號!'
+            elif not users.match_string(kw['passward'],r'^.{8,20}$'):
+                kw['has_error'] = True
+                kw['error_title'] = 'Passward Invalid!'
+                kw['error_message'] = '密碼錯誤，密碼必須介於8到20個字元!'
+            elif kw['passward'] != kw['verify']:
+                logging.error(kw['passward'] +' '+ kw['verify'])
+                kw['has_error'] = True
+                kw['error_title'] = 'Passward Verify Invalid!'
+                kw['error_message'] = '密碼驗證不符合!'
+            elif users.get_user(kw['account']):
+                kw['has_error'] = True
+                kw['error_title'] = 'User Already Exists!'
+                kw['error_message'] = '使用者名稱已經存在，請使用其他的名稱!'
+            else:
+                uid = users.new_user(**kw)
+                self.set_secure_cookie('uid',str(uid))
+                return self.redirect(referer)
+            # if there are some thing wrong.
+            kw['referer_url'] = referer
+            self.render('signup.html',**kw)
 
 
 class LoginPage(BaseHandler):
@@ -47,7 +79,12 @@ class LoginPage(BaseHandler):
         if self.current_user:
             return self.redirect('/')
 
-        self.render('login.html',referer_url='/',has_error=False)
+        referer = self.get_argument(name='referer',default='/')
+        self.render('login.html',
+                        referer_url = referer,
+                        has_error = False,
+                        account = '',
+                    )
 
     def post(self):
         if self.current_user:
@@ -71,14 +108,28 @@ class LoginPage(BaseHandler):
             self.set_secure_cookie('uid',str(user.key.id()))
             return self.redirect(referer)
         else:
-            # Sign with account and passward.
+            # Sign in with account and passward.
             kw = dict()
             kw['account'] = self.get_argument(name='account',default='')
             kw['passward'] = self.get_argument(name='passward',default='')
-            # --------begin-Needs to be done.-------.
-            #users.check_user(**kw)
-            self.error(404)
-            # --------end---Needs to be done.-------
+            # Check user passward.
+            user = None
+            if kw['account']:
+                user = users.get_user(kw['account'])
+            if not user:
+                kw['has_error'] = True
+                kw['error_title'] = 'User Name Invalid!'
+                kw['error_message'] = '使用者名稱錯誤或使用者不存在!'
+            elif not kw['passward'] or not users.check_user(user,kw['passward']):
+                kw['has_error'] = True
+                kw['error_title'] = 'Passward Invalid!'
+                kw['error_message'] = '使用者名稱或密碼錯誤!'
+            else:
+                self.set_secure_cookie('uid',str(user.key.id()))
+                return self.redirect(referer)
+            # if there are some thing wrong.
+            kw['referer_url'] = referer
+            self.render('login.html',**kw)
 
 
 class LogoutPage(BaseHandler):
