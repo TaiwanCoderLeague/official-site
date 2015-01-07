@@ -36,6 +36,12 @@ class User(ndb.Model):
     def by_id(cls,uid):
         return cls.get_by_id(uid,parent=cls.parent_key())
 
+    @classmethod
+    def by_account(cls,account):
+        q = cls.query(ancestor=cls.parent_key())
+        q = q.filter(cls.account==account)
+        return q.get()
+
         
 class Image(ndb.Model):
     img = ndb.BlobProperty(indexed=False)

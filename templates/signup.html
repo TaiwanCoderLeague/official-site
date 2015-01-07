@@ -16,11 +16,11 @@
           <input type="text" name="referer" value="{{referer_url}}" hidden>
           <br>
           <h4 id="login-signin">Sign up:</h4>
-          <input type="text" class="form-control login-input" placeholder="Your Name" required data-validation-required-message="Please enter your name." name="account" required>
+          <input type="text" class="form-control login-input" placeholder="Your Name" required data-validation-required-message="Please enter your name." name="account" value="{{account}}" required>
           <br>
           <input type="password" class="form-control login-input" placeholder="Password" required data-validation-required-message="Please enter your password." name="passward" required>
           <br>
-          <input type="verify" class="form-control login-input" placeholder="Password Again" required data-validation-required-message="Please enter your password again." name="passward" required>
+          <input type="password" class="form-control login-input" placeholder="Password Again" required data-validation-required-message="Please enter your password again." name="verify" required>
           <br>
           <button type="submit" class="btn btn-primary login-submit">
             Sign up
@@ -34,6 +34,8 @@
           <br>
           <br>
         </form>
+        <br>
+        <h5 align="right">已經有帳號了？<a href="/login">登入</a></h5>
       </div>
     </div>
   </div>

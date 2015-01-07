@@ -1,6 +1,10 @@
 #coding=utf-8
 import facebook
 import memcache
+import random
+import hashlib
+import string
+import re
 import logging
 
 from datastore import User
@@ -41,9 +45,38 @@ def new_facebook_user(fb_cookie):
 
 
 # normal user function
-def check_user(name,passward):
-    pass
+def make_salt():
+    return ''.join(random.choice(string.letters) for i in xrange(5))
+
+
+def hash_passward(account,passward,salt=''):
+    if not salt:
+        salt = make_salt()
+    h = hashlib.sha256(account+passward+salt).hexdigest()
+    return '%s,%s'%(h,salt)
+
+
+def get_user(account):
+    return User.by_account(account)
+
+
+def check_user(user,passward):
+    salt = user.passward.split(',')[1]
+    return user.passward == hash_passward(user.account,passward,salt)
+
+
+def match_string(string,sr):
+    return re.compile(sr).match(string)
 
 
 def new_user(**kw):
-    pass
+    user = User(
+            parent=User.parent_key(),
+            name = kw['account'],
+            img_key = '',
+            account = kw['account'],
+            passward = hash_passward(kw['account'],kw['passward']),
+            fbuser = False,
+        )
+    user.put()
+    return user.key.id()
