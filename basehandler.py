@@ -25,3 +25,7 @@ class BaseHandler(tornado.web.RequestHandler):
 
     def error(self,error):
         raise tornado.web.HTTPError(error)
+
+    @staticmethod
+    def authenticated(*a):
+        return tornado.web.authenticated(*a)

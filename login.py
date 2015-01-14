@@ -14,7 +14,7 @@ class SignupPage(BaseHandler):
         if self.current_user:
             return self.redirect('/')
 
-        referer = self.get_argument(name='referer',default='/')
+        referer = self.get_argument(name='next',default='/')
         self.render('signup.html',
                         referer_url = referer,
                         has_error = False,
@@ -79,7 +79,7 @@ class LoginPage(BaseHandler):
         if self.current_user:
             return self.redirect('/')
 
-        referer = self.get_argument(name='referer',default='/')
+        referer = self.get_argument(name='next',default='/')
         self.render('login.html',
                         referer_url = referer,
                         has_error = False,
