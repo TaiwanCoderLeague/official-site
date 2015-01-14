@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+
+{% block Header %}
+<header>
+  <nav class="navbar navbar-default"></nav>
+</header>
+{% end %}
+
+
+{% block NavLink %}    
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  <ul class="nav navbar-nav navbar-right">
+    <li class="hidden">
+      <a href="/"></a>
+    </li>
+    <li>
+      <div class="btn btn-group">
+        <a class="btn btn-link dropdown-toggle" data-toggle="dropdown" href="#">
+          {{current_user.name}}
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+{% end %}
+
+
+{% block Content %}
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      1111111111111
+    </div>
+  </div>
+{% end %}
+
+
+{% block Footer %}
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <span class="copyright">Copyright &copy; Your Website 2014</span>
+      </div>
+    </div>
+  </div>
+</footer>
+{% end %}
+
+
+{% block Modals %}
+{% end %}
+
+
+{% block Javascript %}
+{% end %}
