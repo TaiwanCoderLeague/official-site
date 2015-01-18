@@ -37,6 +37,7 @@ def new_facebook_user(fb_cookie):
         fid = str(profile["id"]),
         name = profile["name"],
         img_key = '',
+        chatclass = random.randrange(0,4),
         profile_url = profile["link"],
         access_token = fb_cookie["access_token"]
     )
@@ -74,6 +75,7 @@ def new_user(**kw):
             parent=User.parent_key(),
             name = kw['account'],
             img_key = '',
+            chatclass = random.randrange(0,4),
             account = kw['account'],
             passward = hash_passward(kw['account'],kw['passward']),
             fbuser = False,

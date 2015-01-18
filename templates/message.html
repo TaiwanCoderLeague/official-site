@@ -33,11 +33,26 @@
 
 
 {% block Content %}
+  <div class="container">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      1111111111111
+    <div class="col-md-9">
+      <p>{{roomname}}</p>
+    </div>
+    <div class="col-md-9 message-div">
+      {% for i in message[::-1] %}
+        <div class="message-content">
+          <p>{{i.content}}</p>
+        </div>
+      {% end %}
+    </div>
+    <div class="col-md-9">
+      <form action="/message" method="post">
+        <textarea class="form-control" name="content" id="" rows="3"></textarea>
+        <button type="submit">submit</button>
+      </form>
     </div>
   </div>
+</div>
 {% end %}
 
 

@@ -2,6 +2,7 @@
 import tornado.web
 import logging
 
+from tornado.escape import json_encode
 from tool import memcache
 from tool.datastore import User
 from tool.config import APP_Key
@@ -22,6 +23,10 @@ class BaseHandler(tornado.web.RequestHandler):
         kw['current_user'] = self.current_user
         kw['request_url'] = self.request.uri
         super(BaseHandler, self).render(*a,**kw)
+
+    def render_json(self,json):
+        self.set_header('Content-Type', 'application/json; charset=UTF-8')
+        self.write(json_encode(json))
 
     def error(self,error):
         raise tornado.web.HTTPError(error)
