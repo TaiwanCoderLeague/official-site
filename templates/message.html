@@ -8,36 +8,31 @@
 {% end %}
 
 
-{% block NavLink %}    
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-  <ul class="nav navbar-nav navbar-right">
-    <li class="hidden">
-      <a href="/"></a>
-    </li>
-    <li>
-      <div class="btn btn-group">
-        <a class="btn btn-link dropdown-toggle" data-toggle="dropdown" href="#">
-          {{current_user.name}}
-          <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li>
-            <a href="/logout">Logout</a>
-          </li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-</div>
+{% block NavLink %}
 {% end %}
 
 
 {% block Content %}
+  <div class="container">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      1111111111111
+    <div class="col-md-9">
+      <p>{{roomname}}</p>
+    </div>
+    <div class="col-md-9 message-div">
+      {% for i in message[::-1] %}
+        <div class="message-content">
+          <p>{{i.content}}</p>
+        </div>
+      {% end %}
+    </div>
+    <div class="col-md-9">
+      <form action="/message" method="post">
+        <textarea class="form-control" name="content" id="" rows="3"></textarea>
+        <button type="submit">submit</button>
+      </form>
     </div>
   </div>
+</div>
 {% end %}
 
 

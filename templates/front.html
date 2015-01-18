@@ -16,44 +16,15 @@
 
 
 {% block NavLink %}
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-  <ul class="nav navbar-nav navbar-right">
-    <li class="hidden">
-      <a href="#page-top"></a>
-    </li>
-    <li>
-      <a class="page-scroll" href="#about">About</a>
-    </li>
-    <li>
-      <a class="page-scroll" href="#portfolio">Members</a>
-    </li>
-    <li>
-      <a class="page-scroll" href="#contact">Contact</a>
-    </li>
-    {% if current_user %}
-    <li>
-      <div class="btn btn-group">
-        <a class="btn btn-link dropdown-toggle" data-toggle="dropdown" href="#">
-          {{current_user.name}}
-          <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li>
-            <a href="/logout">Logout</a>
-          </li>
-        </ul>
-      </div>
-    </li>
-    {% else %}
-    <li>
-      <a class="btn" data-toggle="modal" data-target=".login">Login</a>
-    </li>
-    <li>
-      <a class="btn" data-toggle="modal" data-target=".signup">Sign up</a>
-    </li>
-    {% end %}
-  </ul>
-</div>
+  <li>
+    <a class="page-scroll" href="#about">About</a>
+  </li>
+  <li>
+    <a class="page-scroll" href="#portfolio">Members</a>
+  </li>
+  <li>
+    <a class="page-scroll" href="#contact">Contact</a>
+  </li>
 {% end %}
 
 

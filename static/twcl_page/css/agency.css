@@ -899,3 +899,8 @@ body {
     margin-bottom:-10px;
     background-color:#e3e4e1;
 }
+.message-div{
+    overflow: auto;
+    max-height: 400px;
+    height: 50%;
+}

@@ -1,15 +1,16 @@
 #coding=utf-8
-
 import logging
 
 from google.appengine.ext import ndb
-
+from datetime import datetime
 
 class User(ndb.Model):
     # user name
     name = ndb.StringProperty(required=True)
     # user faces
     img_key = ndb.StringProperty(required=True)
+    # user chatclass
+    chatclass = ndb.IntegerProperty(required=True)
     # time
     created = ndb.DateTimeProperty(auto_now_add=True)
     updated = ndb.DateTimeProperty(auto_now=True)
@@ -21,7 +22,7 @@ class User(ndb.Model):
     fid = ndb.StringProperty()
     profile_url = ndb.StringProperty()
     access_token = ndb.StringProperty()
-    
+
     @staticmethod
     def parent_key():
         return ndb.Key('/','user')
@@ -42,7 +43,7 @@ class User(ndb.Model):
         q = q.filter(cls.account==account)
         return q.get()
 
-        
+
 class Image(ndb.Model):
     img = ndb.BlobProperty(indexed=False)
     created = ndb.DateTimeProperty(auto_now_add=True)
@@ -65,3 +66,18 @@ class Post(ndb.Model):
     @staticmethod
     def parent_key(path='/'):
         return ndb.Key(path,'post')
+
+class Message(ndb.Model):
+    content = ndb.StringProperty(required=True)
+    author = ndb.KeyProperty(required=True)
+    created = ndb.DateTimeProperty(auto_now_add=True)
+
+    @staticmethod
+    def room_key(room):
+        return ndb.Key(room,'message')
+
+    @classmethod
+    def by_room(cls,room,time=datetime.now()):
+        q = cls.query(ancestor=cls.room_key(room))
+        q = q.order(-cls.created)
+        return q.fetch(limit=10)
