@@ -32,14 +32,15 @@ def new_facebook_user(fb_cookie):
     graph = facebook.GraphAPI(fb_cookie["access_token"])
     profile = graph.get_object("me")
     user = User(
-        parent=User.parent_key(),
+        parent = User.parent_key(),
         fbuser = True,
         fid = str(profile["id"]),
         name = profile["name"],
         img_key = '',
         chatclass = random.randrange(0,4),
         profile_url = profile["link"],
-        access_token = fb_cookie["access_token"]
+        access_token = fb_cookie["access_token"],
+        account = str(profile["id"])
     )
     user.put()
     return user

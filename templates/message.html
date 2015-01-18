@@ -8,27 +8,7 @@
 {% end %}
 
 
-{% block NavLink %}    
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-  <ul class="nav navbar-nav navbar-right">
-    <li class="hidden">
-      <a href="/"></a>
-    </li>
-    <li>
-      <div class="btn btn-group">
-        <a class="btn btn-link dropdown-toggle" data-toggle="dropdown" href="#">
-          {{current_user.name}}
-          <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li>
-            <a href="/logout">Logout</a>
-          </li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-</div>
+{% block NavLink %}
 {% end %}
 
 

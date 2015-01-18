@@ -72,12 +72,47 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand page-scroll" href="#page-top" style="font-family: 'Audiowide', cursive;">TWCL</a>
+        <a class="navbar-brand page-scroll" href="/#page-top" style="font-family: 'Audiowide', cursive;">TWCL</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
-      {% block NavLink %}
-      {% end %}
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="hidden">
+            <a href="/"></a>
+          </li>
+          {% block NavLink %}
+          {% end %}
+          {% if current_user %}
+            <li>
+              <div class="btn btn-group">
+                <a class="btn btn-link dropdown-toggle" data-toggle="dropdown" href="#">
+                  {{current_user.name}}
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="/message">Class {{'TWCL'[current_user.chatclass]}}</a>
+                  </li>
+                  <li>
+                    <a href="/message/{{current_user.account}}">message</a>
+                  </li>
+                  <li>
+                    <a href="/logout">Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            {% else %}
+            <li>
+              <a class="btn" data-toggle="modal" data-target=".login">Login</a>
+            </li>
+            <li>
+              <a class="btn" data-toggle="modal" data-target=".signup">Sign up</a>
+            </li>
+          {% end %}
+        </ul>
+      </div>
       <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
