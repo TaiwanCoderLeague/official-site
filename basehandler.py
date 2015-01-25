@@ -24,9 +24,9 @@ class BaseHandler(tornado.web.RequestHandler):
         kw['request_url'] = self.request.uri
         super(BaseHandler, self).render(*a,**kw)
 
-    def render_json(self,json):
+    def render_json(self,dic):
         self.set_header('Content-Type', 'application/json; charset=UTF-8')
-        self.write(json_encode(json))
+        self.write(json_encode(dic))
 
     def error(self,error):
         raise tornado.web.HTTPError(error)

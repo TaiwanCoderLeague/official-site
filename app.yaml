@@ -24,7 +24,7 @@ handlers:
 - url: /static/(.*\.png)$
   static_files: static/\1
   upload: static/.*\.png$
-  mime_type: "image/x-png"
+  mime_type: "image/png"
 - url: /static/(.*\.jpg)$
   static_files: static/\1
   upload: static/.*\.jpg$

@@ -38,15 +38,24 @@ class User(ndb.Model):
         return cls.get_by_id(uid,parent=cls.parent_key())
 
     @classmethod
-    def by_account(cls,account):
-        q = cls.query(ancestor=cls.parent_key())
+    def by_account(cls, account, *a, **kw):
+        q = cls.query(ancestor=cls.parent_key(),)
         q = q.filter(cls.account==account)
-        return q.get()
+        return q.get(*a,**kw)
 
 
 class Image(ndb.Model):
     img = ndb.BlobProperty(indexed=False)
+    img_type = ndb.StringProperty(indexed=False)
     created = ndb.DateTimeProperty(auto_now_add=True)
+
+    @staticmethod
+    def parent_key():
+        return ndb.Key('/','image')
+
+    @classmethod
+    def by_id(cls,imgid):
+        return cls.get_by_id(imgid,parent=cls.parent_key())
 
 
 # The post of Question, Discus, technology, Amazing.
@@ -67,6 +76,7 @@ class Post(ndb.Model):
     def parent_key(path='/'):
         return ndb.Key(path,'post')
 
+
 class Message(ndb.Model):
     content = ndb.StringProperty(required=True)
     author = ndb.KeyProperty(required=True)
@@ -77,7 +87,7 @@ class Message(ndb.Model):
         return ndb.Key(room,'message')
 
     @classmethod
-    def by_room(cls,room,time=datetime.now()):
-        q = cls.query(ancestor=cls.room_key(room))
+    def by_ancestor(cls, ancestor, time=datetime.now()):
+        q = cls.query(ancestor=ancestor)
         q = q.order(-cls.created)
         return q.fetch(limit=10)

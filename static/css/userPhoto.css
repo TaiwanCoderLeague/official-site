@@ -1,0 +1,77 @@
+.user-photo-div{
+    position: relative;
+
+    margin: 5px;
+
+    overflow: hidden;
+
+    background-color: #000;
+    border-radius: 10px;
+}
+.user-photo-div:before{
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+
+.user-photo{
+    position: absolute;
+    top: 0;
+}
+
+.photo-upload{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    
+    height: 40px;
+    width: 100%;
+    overflow: hidden;
+
+    color: #fed136;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 40px;
+    text-align: center;
+
+    background-color: #222;
+
+    opacity: 0.3;
+}
+.photo-upload:hover{
+    opacity: 0.8;
+}
+
+.photo-upload-input{
+    position: absolute;
+    left: -50%;
+
+    height: 100%;
+    width: 150%;
+
+    cursor: pointer;
+
+    opacity: 0;
+}
+
+#photo-loading-div{
+    position: absolute;
+    top: 0;
+
+    height: 100%;
+    width: 100%;
+
+    background-color: #000;
+
+    opacity: 0.8;
+}
+
+#photo-loading-gif{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
