@@ -21,9 +21,9 @@ class MessagePage(BaseHandler):
             kw['message'] = Message.by_ancestor(room_user.key)
             kw['face_url'] = '/static/img/autoface.png'
             if room_user.img_key:
-                kw['face_url'] = '/img/'+room_user.img_key
+                kw['face_url'] = '/img/'+room_user.img_key.urlsafe()
             kw['path'] = '/'+path
-            kw['user_key'] = self.current_user.key.id()
+            kw['user_key'] = self.current_user.key.urlsafe()
             kw['self_message_page'] = room_user.key==self.current_user.key
             self.render('message.html',**kw)
         else:

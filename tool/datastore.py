@@ -4,11 +4,19 @@ import logging
 from google.appengine.ext import ndb
 from datetime import datetime
 
+
+def get_from_urlsafe(urlsafe, keys_only=False):
+    key = ndb.Key(urlsafe=urlsafe)
+    if keys_only:
+        return key
+    return key.get()
+
+
 class User(ndb.Model):
     # user name
     name = ndb.StringProperty(required=True)
     # user faces
-    img_key = ndb.StringProperty(required=True)
+    img_key = ndb.KeyProperty()
     # user chatclass
     chatclass = ndb.IntegerProperty(required=True)
     # time
@@ -50,12 +58,12 @@ class Image(ndb.Model):
     created = ndb.DateTimeProperty(auto_now_add=True)
 
     @staticmethod
-    def parent_key():
-        return ndb.Key('/','image')
+    def parent_key(compression='origin'):
+        return ndb.Key('/',compression)
 
     @classmethod
-    def by_id(cls,imgid):
-        return cls.get_by_id(imgid,parent=cls.parent_key())
+    def by_id(cls, imgid, compression='origin'):
+        return cls.get_by_id(imgid,parent=cls.parent_key(compression))
 
 
 # The post of Question, Discus, technology, Amazing.

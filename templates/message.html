@@ -3,6 +3,7 @@
 
 {% block Link %}
 <link rel="stylesheet" href="/static/css/userPhoto.css">
+<link rel="stylesheet" href="/static/css/message.css">
 {% end %}
 
 
@@ -21,11 +22,24 @@
   <div class="container">
   <div class="row">
     <div class="col-md-9">
-      <p>{{roomname}}</p>
+      <h2>{{roomname}}</h2>
       <div class="message-div">
         {% for i in message[::-1] %}
           <div class="message-content">
-            <p>{{i.content}}</p>
+            {% if i.author.get().img_key %}
+              {% set img_path = "/img/"+i.author.get().img_key.urlsafe() %}
+            {% else %}
+              {% set img_path = "/static/img/autoface.png" %}
+            {% end %}
+            <img src="{{img_path}}" alt="{{i.author.get().name}}" class="message-photo img-circle">
+            <div class="message-text-div">
+              <div class="message-name">
+                <a href="/message/{{i.author.get().account}}">{{i.author.get().name}}</a>
+              </div>
+              <div class="message-text">{{i.content}}</div>
+              <div class="message-time">{{i.created.strftime("%Y-%m-%d %H:%M")}}</div>
+            </div>
+            <div class="clear-float"></div>
           </div>
         {% end %}
       </div>
